@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema LavaRápido</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela de Login -->
+        <div id="login-form" class="form-container">
+            <h2>Login do Atendente</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            <p id="loginError" class="error-message"></p>
+        </div>
+
+        <!-- Tela Principal do Sistema -->
+        <div id="main-app" class="main-app hidden">
+            <header>
+                <h1>LavaRápido - Recebimento de Peças</h1>
+                <button id="logoutBtn">Sair</button>
+            </header>
+            
+            <main>
+                <!-- Seção do Cliente -->
+                <section class="client-section">
+                    <h2>Dados do Cliente</h2>
+                    <div class="input-row">
+                        <input type="text" id="clientName" placeholder="Nome do Cliente">
+                        <input type="tel" id="clientPhone" placeholder="Telefone (ex: 1199998888)">
+                        <button id="findClientBtn">Buscar / Cadastrar</button>
+                    </div>
+                    <p id="clientInfo" class="info-message"></p>
+                </section>
+
+                <!-- Seção de Itens do Pedido -->
+                <section class="items-section">
+                    <h2>Adicionar Peças</h2>
+                    <div class="input-row">
+                        <select id="itemType">
+                            <option value="">Selecione o Tipo</option>
+                            <option value="Camisa">Camisa</option>
+                            <option value="Calça">Calça</option>
+                            <option value="Toalha">Toalha</option>
+                            <option value="Roupa Delicada">Roupa Delicada</option>
+                        </select>
+                        <input type="number" id="itemQuantity" placeholder="Quantidade" min="1" value="1">
+                    </div>
+                    <div class="services-row">
+                        <label><input type="checkbox" name="services" value="Lavar"> Lavar</label>
+                        <label><input type="checkbox" name="services" value="Secar"> Secar</label>
+                        <label><input type="checkbox" name="services" value="Passar"> Passar</label>
+                        <label><input type="checkbox" name="services" value="Pacote Completo"> Pacote Completo</label>
+                    </div>
+                    <button id="addItemBtn">Adicionar Item</button>
+                </section>
+
+                <!-- Lista de Itens e Resumo -->
+                <section class="summary-section">
+                    <h2>Resumo do Pedido</h2>
+                    <table id="itemsTable">
+                        <thead>
+                            <tr>
+                                <th>Peça</th>
+                                <th>Serviços</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTableBody">
+                            <!-- Itens serão adicionados aqui via JS -->
+                        </tbody>
+                    </table>
+                    <div class="total-container">
+                        <h3>Subtotal: R$ <span id="subtotalValue">0.00</span></h3>
+                        <h3 id="discountDisplay" class="discount-display hidden">Desconto Fidelidade: <span id="discountValue">0.00</span>%</h3>
+                        <h2>Total: R$ <span id="totalValue">0.00</span></h2>
+                    </div>
+                    <button id="finalizeOrderBtn">Finalizar Pedido</button>
+                </section>
+            </main> 
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
